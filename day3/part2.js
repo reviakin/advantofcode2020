@@ -13,11 +13,16 @@ var Box = (x) => ({
   map: (f) => Box(f(x)),
 });
 
-Box(document.body.textContent.split("\n").filter(Boolean)).fold(
-  (list) =>
-    list.reduce(foo(1), 0) *
-    list.reduce(foo(3), 0) *
-    list.reduce(foo(5), 0) *
-    list.reduce(foo(7), 0) *
-    list.filter((_, index) => index % 2 === 0 || index === 0).reduce(foo(1), 0)
-);
+Box(document.body.textContent)
+  .map((content) => content.split("\n"))
+  .map((lines) => lines.filter(Boolean))
+  .fold(
+    (lines) =>
+      lines.reduce(foo(1), 0) *
+      lines.reduce(foo(3), 0) *
+      lines.reduce(foo(5), 0) *
+      lines.reduce(foo(7), 0) *
+      lines
+        .filter((_, index) => index % 2 === 0 || index === 0)
+        .reduce(foo(1), 0)
+  );
