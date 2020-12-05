@@ -36,4 +36,5 @@ Box(document.body.textContent)
     }))
   )
   .map((chars) => chars.map(({ column, row }) => row * 8 + column))
-  .fold((result) => Math.max(...result));
+  .map((ids) => Math.max(...ids))
+  .fold((result) => result);
