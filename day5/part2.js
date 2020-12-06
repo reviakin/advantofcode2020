@@ -49,3 +49,20 @@ Box(document.body.textContent)
     )
   )
   .fold((id) => id);
+
+/**
+ * @author
+ * @alexeyten
+ */
+
+const seats = document.body.textContent
+  .trim()
+  .split("\n")
+  .reduce((seats, code) => {
+    const id = parseInt(code.replace(/[FL]/g, "0").replace(/[BR]/g, "1"), 2);
+    seats[id] = id;
+    return seats;
+  }, []);
+
+let seat;
+seats.some((v) => !seats[(seat = v + 1)]);
