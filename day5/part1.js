@@ -38,3 +38,17 @@ Box(document.body.textContent)
   .map((chars) => chars.map(({ column, row }) => row * 8 + column))
   .map((ids) => Math.max(...ids))
   .fold((result) => result);
+
+/**
+ * @author
+ * @alexeyten
+ */
+
+Math.max(
+  ...document.body.textContent
+    .trim()
+    .split("\n")
+    .map((code) =>
+      parseInt(code.replace(/[FL]/g, "0").replace(/[BR]/g, "1"), 2)
+    )
+);
