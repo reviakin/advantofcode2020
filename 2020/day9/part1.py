@@ -50,7 +50,7 @@ def solve(input_list):
               len(input_list[start_position:position]))
 
         if is_valid == False:
-            print('no valid', 'index: ', position)
+            print('no valid index: ', position)
             break
 
         position = position + 1
