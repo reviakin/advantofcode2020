@@ -8,7 +8,7 @@ xs.append(max(xs) + 3)
 DP = {}
 
 
-def solve_step2(i):
+def dp(i):
     if i == len(xs) - 1:
         return 1
     if i in DP:
@@ -21,5 +21,5 @@ def solve_step2(i):
     return ans
 
 
-result_step2 = solve_step2(0)
+result_step2 = dp(0)
 print(result_step2)
