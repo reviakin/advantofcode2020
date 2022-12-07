@@ -25,5 +25,6 @@ let p2 = (err, data) => {
     data.split("").findIndex(isStartOfPacketMarket(14)) + 1
   );
 };
+
 fs.readFile("./input.txt", "utf8", p2);
 fs.readFile("./input.txt", "utf8", p1);
