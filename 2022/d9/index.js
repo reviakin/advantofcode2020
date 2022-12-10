@@ -30,8 +30,7 @@ class Point {
     if (delta > 1) {
       const deltaX = point.x - this.x;
       const deltaY = point.y - this.y;
-      // this.x += Math.abs(deltaX) === 2 ? deltaX / 2 : deltaX;
-      this.x += 1;
+      this.x += Math.abs(deltaX) === 2 ? deltaX / 2 : deltaX;
       this.y += Math.abs(deltaY) === 2 ? deltaY / 2 : deltaY;
     }
   }
@@ -72,4 +71,27 @@ let p1 = () => {
   console.log(positions.size);
 };
 
+let p2 = () => {
+  let knots = Array(10)
+    .fill(0)
+    .map(() => new Point());
+  let tail = knots[9];
+  let positions = new Set();
+  let addPosition = (x, y) => positions.add(`${x} - ${y}`);
+  input.forEach(({ direction, moves }) => {
+    for (let i = 0; i < moves; i++) {
+      knots.forEach((knot, index) => {
+        if (index == 0) {
+          knot.move(direction);
+        } else {
+          knot.follow(knots[index - 1]);
+        }
+      });
+      addPosition(...tail.getState());
+    }
+  });
+  console.log(positions.size);
+};
+
 p1();
+p2();
